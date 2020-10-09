@@ -6,6 +6,9 @@ use App\Models\Country;
 use App\Models\Language;
 use App\Models\Podcast;
 use App\Models\PodcastCategory;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -14,7 +17,7 @@ class PodcastController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return Application|Factory|View|Response
      */
     public function index()
     {
@@ -25,14 +28,23 @@ class PodcastController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|Factory|View|Response
      */
     public function create()
     {
-        $countries = Country::where('id', '!=', NULL)->orderBy('name', 'asc')->get();
-        $categories = PodcastCategory::all();
-        $languages = Language::where('iso_639_1', '!=', NULL)->orderBy('name', 'asc')->get();
-        return view('podcasts.create', compact('languages', 'categories', 'countries'));
+        return view('podcasts.create');
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Podcast $podcast
+     * @return Application|Factory|View|Response
+     */
+    public function show(Podcast $podcast)
+    {
+        return view('podcasts.show', compact('podcast'));
     }
 
     }
