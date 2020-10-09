@@ -7,7 +7,7 @@
                     <tr>
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Podcast</th>
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Categories</th>
-                        <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Languages</th>
+                        <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Language</th>
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Info</th>
                         <th class="px-6 py-3 bg-gray-50"></th>
                     </tr>
@@ -17,31 +17,42 @@
                         @foreach($podcasts as $podcast)
                     <tr>
                         <td class="px-6 py-4 whitespace-no-wrap">
-                            <div class="flex items-center">
+                            <a href="{{ route('podcast.show', $podcast->id) }}" class="flex items-center">
                                 <div class="flex-shrink-0 h-10 w-10">
-                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60" alt="">
+                                    <img class="h-10 w-10 rounded-md" src="{{ Storage::url($podcast->image) }}" alt="">
                                 </div>
                                 <div class="ml-4">
                                     <div class="text-sm leading-5 font-medium text-gray-900">
-                                        Jane Cooper
+                                        {{ $podcast->title }}
                                     </div>
                                     <div class="text-sm leading-5 text-gray-500">
-                                        jane.cooper@example.com
+                                        @if(strlen($podcast->description) > 50)
+                                        {{ substr($podcast->description, 0, 50) }}...
+                                        @else
+                                        {{ $podcast->description }}
+                                        @endif
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap">
-                            <div class="text-sm leading-5 text-gray-900">Regional Paradigm Technician</div>
-                            <div class="text-sm leading-5 text-gray-500">Optimization</div>
+                            @if(count($podcast->categories) != 0)
+                                @foreach($podcast->categories as $cat)
+                                    <div class="text-sm leading-5 text-gray-900">{{ \App\Models\PodcastCategory::where('id', '=', $cat)->first()->name }}</div>
+                                @endforeach
+                            @else
+                                <div class="text-sm leading-5 text-red-900">No Categories Yet.</div>
+                            @endif
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap">
                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                              Active
+                              {{ $podcast->getLanguage->name }}
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                            Admin
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full @if ($podcast->itunes_type == "Episodic"){{ 'bg-blue-100' }}@elseif($podcast->itunes_type == "Serial"){{ 'bg-yellow-100' }}@endif text-black-800">
+                              {{ $podcast->itunes_type }}
+                            </span>
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
                             <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>

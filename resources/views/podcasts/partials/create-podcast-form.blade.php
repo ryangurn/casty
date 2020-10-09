@@ -26,7 +26,7 @@
             <input type="file" wire:model="image">
 
             @if ($image)
-                <img class="w-32 h-32 m-4 rounded-full" src="{{ $image->temporaryUrl() }}">
+                <img class="w-32 h-32 m-4 rounded-md" src="{{ $image->temporaryUrl() }}">
             @endif
 
             <x-jet-input-error for="image" class="mt-2" />
@@ -147,7 +147,7 @@
                         @endforeach
                     </select>
                 </div>
-                <x-jet-input-error for="countries" class="mt-2" />
+                <x-jet-input-error for="spotify_countries" class="mt-2" />
             </div>
         @endif
 
