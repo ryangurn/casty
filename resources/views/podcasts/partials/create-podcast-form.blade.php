@@ -59,7 +59,7 @@
                     @endforeach
                 </select>
             </div>
-            <x-jet-input-error for="categories[]" class="mt-2" />
+            <x-jet-input-error for="podcast_categories" class="mt-2" />
         </div>
         @endif
 

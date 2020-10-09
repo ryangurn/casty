@@ -54,16 +54,20 @@ class PodcastForm extends Component
         $podcast['image'] = $p;
         $podcast['language'] = $validated['language'];
         $podcast['categories'] = $validated['podcast_categories'];
-        $podcast['explicit'] = ($validated['explicit'] == null) ? "false" : "true";
+        $podcast['explicit'] = ($validated['explicit'] == null) ? false : true;
         $podcast['link'] = $validated['link'];
-        $podcast['author'] = $validated['author'];
-        $podcast['owner'] = $validated['owner'];
+        if (isset($validated['author']) && $validated['author'] != null)
+            $podcast['author'] = $validated['author'];
+        if (isset($validated['owner']) && $validated['owner'] != null)
+            $podcast['owner'] = $validated['owner'];
         $podcast['itunes_title'] = $validated['itunes_title'];
-        $podcast['itunes_type'] = $validated['itunes_type'];
+        $podcast['itunes_type'] = ($validated['itunes_type'] == null) ? 0 : $validated['itunes_type'];
         $podcast['copyright'] = $validated['copyright'];
         $podcast['spotify_restriction'] = $validated['spotify_countries'];
         $podcast['spotify_limit'] = $validated['spotify_limit'];
-        
+
+        Podcast::create($podcast);
+
         return redirect()->route('podcast.index');
 
     }
