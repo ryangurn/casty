@@ -41,6 +41,7 @@ class Podcast extends Model
     protected $casts = [
         'categories' => 'array',
         'explicit' => 'boolean',
+        'author' => 'array',
         'owner' => 'array',
         'itunes_type' => 'boolean',
         'itunes_block' => 'boolean',

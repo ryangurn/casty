@@ -26,7 +26,7 @@ class CreatePodcastsTable extends Migration
 
             // recommended things
             $table->text('link')->nullable();
-            $table->string('author')->nullable();
+            $table->longText('author')->nullable();
             $table->longText('owner')->nullable();
 
             // situational things
