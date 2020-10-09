@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Language;
 use App\Models\Podcast;
+use App\Models\PodcastCategory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -27,9 +28,11 @@ class PodcastController extends Controller
      */
     public function create()
     {
-
+        $categories = PodcastCategory::all();
         $languages = Language::where('iso_639_1', '!=', NULL)->orderBy('name', 'asc')->get();
-        return view('podcasts.create', compact('languages'));
+        return view('podcasts.create', compact('languages', 'categories'));
+    }
+
     }
 
 }
