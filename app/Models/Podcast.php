@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * Class Podcast
@@ -48,4 +49,23 @@ class Podcast extends Model
         'itunes_complete' => 'boolean',
         'spotify_restriction' => 'array',
     ];
+
+    /**
+     * @return HasOne
+     */
+    public function getLanguage()
+    {
+        return $this->hasOne(Language::class, 'id', 'language');
+    }
+
+    public function getItunesTypeAttribute($value)
+    {
+        switch ($value)
+        {
+            case 0:
+                return 'Episodic';
+            case 1:
+                return 'Serial';
+        }
+    }
 }
