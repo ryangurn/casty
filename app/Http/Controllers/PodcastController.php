@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use App\Models\Language;
 use App\Models\Podcast;
 use App\Models\PodcastCategory;
@@ -28,9 +29,10 @@ class PodcastController extends Controller
      */
     public function create()
     {
+        $countries = Country::where('id', '!=', NULL)->orderBy('name', 'asc')->get();
         $categories = PodcastCategory::all();
         $languages = Language::where('iso_639_1', '!=', NULL)->orderBy('name', 'asc')->get();
-        return view('podcasts.create', compact('languages', 'categories'));
+        return view('podcasts.create', compact('languages', 'categories', 'countries'));
     }
 
     }
