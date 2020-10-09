@@ -32,7 +32,7 @@ class PodcastForm extends Component
         'itunes_title' => 'nullable|min:3|max:255',
         'itunes_type' => 'nullable|in:serial,episodic',
         'copyright' => 'nullable|min:5|max:255',
-        'spotify_countries' => 'nullable|numeric|exists:countries,id',
+        'spotify_countries' => 'nullable|exists:countries,id',
         'spotify_limit' => 'nullable|numeric',
     ];
 
