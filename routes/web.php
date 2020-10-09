@@ -25,5 +25,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::group(['middleware' => ['verified', 'auth:sanctum']], function (){
     Route::group(['prefix' => 'podcast'], function() {
         Route::get('/', [PodcastController::class, 'index'])->name('podcast.index');
+        Route::get('/create', [PodcastController::class, 'create'])->name('podcast.create');
     });
 });
