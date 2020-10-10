@@ -47,6 +47,17 @@ class PodcastController extends Controller
         return view('podcasts.show', compact('podcast'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Podcast $podcast
+     * @return Response
+     */
+    public function edit(Podcast $podcast)
+    {
+        return view('podcasts.update', compact('podcast'));
+    }
+
     }
 
 }
