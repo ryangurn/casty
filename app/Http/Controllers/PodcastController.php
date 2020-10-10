@@ -57,7 +57,4 @@ class PodcastController extends Controller
     {
         return view('podcasts.update', compact('podcast'));
     }
-
-    }
-
 }
