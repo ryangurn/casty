@@ -9,7 +9,7 @@ use App\Models\PodcastCategory;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class PodcastForm extends Component
+class CreatePodcastForm extends Component
 {
     use WithFileUploads;
 
