@@ -13,7 +13,7 @@ class PodcastForm extends Component
 {
     use WithFileUploads;
 
-    public $title, $description, $image, $language, $explicit, $link, $itunes_title, $itunes_type, $copyright, $spotify_limit;
+    public $title, $description, $image, $language, $explicit, $link, $itunes_title, $itunes_type, $copyright, $spotify_limit, $spotify_origin;
     public $author, $owner, $spotify_countries, $podcast_categories = [];
 
     protected $rules = [
@@ -34,6 +34,7 @@ class PodcastForm extends Component
         'copyright' => 'nullable|min:5|max:255',
         'spotify_countries' => 'nullable|exists:countries,id',
         'spotify_limit' => 'nullable|numeric',
+        'spotify_origin' => 'nullable|exists:countries,id',
     ];
 
     public function updated($propertyName)
@@ -61,10 +62,11 @@ class PodcastForm extends Component
         if (isset($validated['owner']) && $validated['owner'] != null)
             $podcast['owner'] = $validated['owner'];
         $podcast['itunes_title'] = $validated['itunes_title'];
-        $podcast['itunes_type'] = ($validated['itunes_type'] == null) ? 0 : $validated['itunes_type'];
+        $podcast['itunes_type'] = ($validated['itunes_type'] == null) ? 0 : (($validated['itunes_type'] == "serial") ? 1 : 0);
         $podcast['copyright'] = $validated['copyright'];
         $podcast['spotify_restriction'] = $validated['spotify_countries'];
         $podcast['spotify_limit'] = $validated['spotify_limit'];
+        $podcast['spotify_country_of_origin'] = $validated['spotify_origin'];
 
         Podcast::create($podcast);
 
