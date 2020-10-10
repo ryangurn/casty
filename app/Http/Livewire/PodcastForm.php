@@ -42,7 +42,7 @@ class PodcastForm extends Component
         $this->validateOnly($propertyName);
     }
 
-    public function createUser()
+    public function createPodcast()
     {
         $validated = $this->validate();
 

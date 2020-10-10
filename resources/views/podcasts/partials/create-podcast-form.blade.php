@@ -1,4 +1,4 @@
-<x-jet-form-section submit="createUser">
+<x-jet-form-section submit="createPodcast">
     <x-slot name="title">
         {{ __('Podcast Details') }}
     </x-slot>
@@ -172,8 +172,6 @@
                 <x-jet-input-error for="spotify_origin" class="mt-2" />
             </div>
         @endif
-
-{{--        spotify_country_of_origin--}}
 
     </x-slot>
 
