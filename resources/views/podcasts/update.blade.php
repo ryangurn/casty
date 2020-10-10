@@ -13,6 +13,7 @@
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             @livewire('update-podcast-basic-form', ['podcast' => $podcast])
             @livewire('update-podcast-itunes-form', ['podcast' => $podcast])
+            @livewire('update-podcast-spotify-form', ['podcast' => $podcast])
         </div>
     </div>
 </x-app-layout>

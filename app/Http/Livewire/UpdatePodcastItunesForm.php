@@ -2,6 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
@@ -11,7 +15,7 @@ class UpdatePodcastItunesForm extends Component
     public $itunes_title, $link, $itunes_type, $copyright;
     public $author, $owner = [];
 
-    public $rules = [
+    protected $rules = [
         'link' => 'nullable|url',
         'author.name' => 'nullable|min:1|max:50',
         'author.email' => 'nullable|email',
@@ -22,6 +26,9 @@ class UpdatePodcastItunesForm extends Component
         'copyright' => 'nullable|min:5|max:255',
     ];
 
+    /**
+     * @param $podcast
+     */
     public function mount($podcast)
     {
         $this->link = $podcast->link;
@@ -41,6 +48,9 @@ class UpdatePodcastItunesForm extends Component
         $this->validateOnly($propertyName);
     }
 
+    /**
+     * @return RedirectResponse
+     */
     public function updateItunes()
     {
         $validated = $this->validate();
@@ -65,6 +75,9 @@ class UpdatePodcastItunesForm extends Component
         return redirect()->route('podcast.show', $podcast->id);
     }
 
+    /**
+     * @return Application|Factory|View
+     */
     public function render()
     {
         return view('podcasts.partials.update-podcast-itunes-form');
