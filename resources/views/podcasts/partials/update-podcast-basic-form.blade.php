@@ -23,13 +23,15 @@
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="image" value="{{ __('Podcast Image') }}" />
-            <input type="file" wire:model="image">
+            <input type="file" wire:model="updated_image">
 
-            @if ($image != null)
+            @if ($updated_image != null)
+                <img class="w-32 h-32 m-4 rounded-md" src="{{ $image->temporaryUrl() }}">
+            @elseif ($image != null)
                 <img class="w-32 h-32 m-4 rounded-md" src="{{ Storage::url($image) }}">
             @endif
 
-            <x-jet-input-error for="image" class="mt-2" />
+            <x-jet-input-error for="updated_image" class="mt-2" />
         </div>
 
         @if(isset($languages) && !$languages->isEmpty())
