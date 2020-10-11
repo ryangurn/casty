@@ -14,6 +14,7 @@
             @livewire('update-podcast-basic-form', ['podcast' => $podcast])
             @livewire('update-podcast-itunes-form', ['podcast' => $podcast])
             @livewire('update-podcast-spotify-form', ['podcast' => $podcast])
+            @livewire('new-feed-podcast-form', ['podcast' => $podcast])
             @livewire('block-podcast-form', ['podcast' => $podcast])
             @livewire('complete-podcast-form', ['podcast' => $podcast])
             @livewire('delete-podcast-form', ['podcast' => $podcast])
