@@ -58,6 +58,10 @@ class Podcast extends Model
         return $this->hasOne(Language::class, 'id', 'language');
     }
 
+    /**
+     * @param $value
+     * @return string
+     */
     public function getItunesTypeAttribute($value)
     {
         switch ($value)
@@ -67,5 +71,10 @@ class Podcast extends Model
             case 1:
                 return 'Serial';
         }
+    }
+
+    public function episodes()
+    {
+        return $this->hasMany(Episode::class, 'podcast_id', 'id');
     }
 }
