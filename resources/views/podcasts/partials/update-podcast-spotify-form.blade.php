@@ -1,4 +1,4 @@
-<x-jet-form-section submit="updateSpotify" class="mt-8 mb-8">
+<x-jet-form-section submit="updateSpotify" class="mt-8">
     <x-slot name="title">
         {{ __('Update Spotify Specific Details') }}
     </x-slot>
