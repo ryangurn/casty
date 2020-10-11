@@ -5,12 +5,12 @@
         </x-slot>
 
         <x-slot name="description">
-            {{ __('If you want your show removed from the Apple directory, ensure that it is blocked.') }}
+            {{ __('If you will never publish another episode to your show, then mark it complete.') }}
         </x-slot>
 
         <x-slot name="content">
             <div class="max-w-xl text-sm text-gray-600">
-                {{ __('Blocking a podcast, prevents the entire podcast from appearing in Apple Podcasts.') }}
+                {{ __('Specifying a podcast is complete indicates that a podcast is complete and you will not post any more episodes in the future.') }}
             </div>
 
             <div class="mt-5">
