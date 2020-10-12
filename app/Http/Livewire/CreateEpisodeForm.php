@@ -53,7 +53,7 @@ class CreateEpisodeForm extends Component
 
         $media = $this->enclosure->storeAs($this->podcast->id . '-media', time() . '.'. $this->enclosure->extension(), 'public');
         if (isset($this->image) && $this->image != null)
-            $photo = $this->image->storeAs($this->podcast->id . '-media', time().'.'.$this->image->extension(), 'public');
+            $photo = $this->image->storeAs($this->podcast->id . '-media', time() . '-image.' . $this->image->extension(), 'public');
 
         $item = [];
         $item['podcast_id'] = $this->podcast->id;
@@ -70,7 +70,7 @@ class CreateEpisodeForm extends Component
         $item['description'] = $validated['description'];
         $item['link'] = $validated['link'];
         if (isset($this->image) && $this->image != null)
-            $item['image'] = $validated['image'];
+            $item['image'] = $photo;
         $item['explicit'] = ($validated['explicit'] == null) ? false : true;
         $item['itunes_title'] = $validated['itunes_title'];
         $item['itunes_episode_number'] = $validated['itunes_episode_number'];
