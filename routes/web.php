@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\PodcastController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,5 +29,11 @@ Route::group(['middleware' => ['verified', 'auth:sanctum']], function (){
         Route::get('/create', [PodcastController::class, 'create'])->name('podcast.create');
         Route::get('/{podcast}', [PodcastController::class, 'show'])->name('podcast.show');
         Route::get('/edit/{podcast}', [PodcastController::class, 'edit'])->name('podcast.edit');
+
+        Route::group(['prefix' => '{podcast}/episode'], function () {
+            Route::get('/', [EpisodeController::class, 'index'])->name('episode.index');
+            Route::get('/create', [EpisodeController::class, 'create'])->name('episode.create');
+        });
+
     });
 });
