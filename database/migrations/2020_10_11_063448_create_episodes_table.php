@@ -36,7 +36,7 @@ class CreateEpisodesTable extends Migration
             $table->boolean('itunes_block')->default(0);
 
             $table->longText('spotify_restriction')->nullable();
-            $table->integer('order');
+            $table->integer('order')->nullable();
             // part of dcterms:valid for spotify
             $table->timestamp('spotify_start')->nullable();
             $table->timestamp('spotfiy_end')->nullable();
