@@ -56,6 +56,7 @@
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
                             <a href="{{ route('podcast.edit', $podcast->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            <a href="{{ route('episode.index', $podcast->id) }}" class="text-red-600 hover:text-red-900">Episodes</a>
                         </td>
                     </tr>
                         @endforeach
