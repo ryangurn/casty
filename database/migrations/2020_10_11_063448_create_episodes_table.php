@@ -39,7 +39,7 @@ class CreateEpisodesTable extends Migration
             $table->integer('order')->nullable();
             // part of dcterms:valid for spotify
             $table->timestamp('spotify_start')->nullable();
-            $table->timestamp('spotfiy_end')->nullable();
+            $table->timestamp('spotify_end')->nullable();
             $table->longText('spotify_chapters')->nullable(); // include start (seconds), title (string), href (string), image (string)
             $table->longText('spotify_keywords')->nullable();
 
