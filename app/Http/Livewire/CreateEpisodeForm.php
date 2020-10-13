@@ -33,7 +33,7 @@ class CreateEpisodeForm extends Component
         'itunes_type' => 'nullable|in:full,trailer,bonus',
         'spotify_countries' => 'nullable|exists:countries,id',
         'spotify_order' => 'nullable|numeric',
-        // ensure that end is after start
+        // TODO: ensure that end is after start
         'spotify_start' => 'nullable|date_format:m/d/Y H:i',
         'spotify_end' => 'nullable|date_format:m/d/Y H:i',
         'spotify_chapters' => 'nullable|json',
