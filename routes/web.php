@@ -33,6 +33,7 @@ Route::group(['middleware' => ['verified', 'auth:sanctum']], function (){
         Route::group(['prefix' => '{podcast}/episode'], function () {
             Route::get('/', [EpisodeController::class, 'index'])->name('episode.index');
             Route::get('/create', [EpisodeController::class, 'create'])->name('episode.create');
+            Route::get('/{episode}', [EpisodeController::class, 'show'])->name('episode.show');
         });
 
     });

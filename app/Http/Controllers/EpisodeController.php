@@ -38,12 +38,13 @@ class EpisodeController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param Podcast $podcast
      * @param Episode $episode
-     * @return Response
+     * @return Application|Factory|View|void
      */
     public function show(Podcast $podcast, Episode $episode)
     {
-        //
+        return view('episodes.show', compact('podcast', 'episode'));
     }
 
     /**
