@@ -28,7 +28,7 @@
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="spotify_limit" value="{{ __('Spotify Display Limit (optional)') }}" />
-            <x-jet-input name="spotify_limit" id="spotify_limit" type="text" class="mt-1 block w-full" wire:model="spotify_limit" autofocus />
+            <x-jet-input name="spotify_limit" id="spotify_limit" type="text" class="mt-1 block w-full" wire:model="spotify_limit"  />
             <x-jet-input-error for="spotify_limit" class="mt-2" />
         </div>
 

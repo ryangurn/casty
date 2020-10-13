@@ -11,13 +11,13 @@
     <x-slot name="form">
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="title" value="{{ __('Podcast Title') }}" />
-            <x-jet-input id="title" type="text" class="mt-1 block w-full" wire:model.defer="title" autofocus />
+            <x-jet-input id="title" type="text" class="mt-1 block w-full" wire:model.defer="title"  />
             <x-jet-input-error for="title" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="description" value="{{ __('Description') }}" />
-            <x-textarea id="description" class="mt-1 block w-full" wire:model="description" autofocus />
+            <x-textarea id="description" class="mt-1 block w-full" wire:model="description"  />
             <x-jet-input-error for="description" class="mt-2" />
         </div>
 

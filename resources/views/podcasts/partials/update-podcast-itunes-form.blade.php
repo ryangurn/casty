@@ -12,37 +12,37 @@
     <x-slot name="form">
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="link" value="{{ __('Podcast Website Link (optional)') }}" />
-            <x-jet-input name="link" id="link" type="text" class="mt-1 block w-full" wire:model="link" autofocus />
+            <x-jet-input name="link" id="link" type="text" class="mt-1 block w-full" wire:model="link"  />
             <x-jet-input-error for="link" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="author.name" value="{{ __('Author Name (optional)') }}" />
-            <x-jet-input name="author.name" id="author.name" type="text" class="mt-1 block w-full" wire:model="author.name" autofocus />
+            <x-jet-input name="author.name" id="author.name" type="text" class="mt-1 block w-full" wire:model="author.name"  />
             <x-jet-input-error for="author.name" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="author.email" value="{{ __('Author Email (optional)') }}" />
-            <x-jet-input name="author.email" id="author.email" type="text" class="mt-1 block w-full" wire:model="author.email" autofocus />
+            <x-jet-input name="author.email" id="author.email" type="text" class="mt-1 block w-full" wire:model="author.email"  />
             <x-jet-input-error for="author.email" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="owner.name" value="{{ __('Owner Name (optional)') }}" />
-            <x-jet-input name="owner.name" id="owner.name" type="text" class="mt-1 block w-full" wire:model="owner.name" autofocus />
+            <x-jet-input name="owner.name" id="owner.name" type="text" class="mt-1 block w-full" wire:model="owner.name"  />
             <x-jet-input-error for="owner.name" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="owner.email" value="{{ __('Owner Email (optional)') }}" />
-            <x-jet-input name="owner.email" id="owner.email" type="text" class="mt-1 block w-full" wire:model="owner.email" autofocus />
+            <x-jet-input name="owner.email" id="owner.email" type="text" class="mt-1 block w-full" wire:model="owner.email"  />
             <x-jet-input-error for="owner.email" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="itunes_title" value="{{ __('Optional iTunes Title') }}" />
-            <x-jet-input id="itunes_title" type="text" class="mt-1 block w-full" wire:model.defer="itunes_title" autofocus />
+            <x-jet-input id="itunes_title" type="text" class="mt-1 block w-full" wire:model.defer="itunes_title"  />
             <x-jet-input-error for="itunes_title" class="mt-2" />
         </div>
 
@@ -61,7 +61,7 @@
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="copyright" value="{{ __('Copyright (optional)') }}" />
-            <x-textarea name="copyright" id="copyright" class="mt-1 block w-full" wire:model="copyright" autofocus />
+            <x-textarea name="copyright" id="copyright" class="mt-1 block w-full" wire:model="copyright"  />
             <x-jet-input-error for="copyright" class="mt-2" />
         </div>
 

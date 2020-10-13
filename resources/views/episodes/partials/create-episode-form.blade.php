@@ -11,7 +11,7 @@
     <x-slot name="form">
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="title" value="{{ __('Episode Title') }}" />
-            <x-jet-input type="text" class="mt-1 block w-full" wire:model.defer="title" autofocus />
+            <x-jet-input type="text" class="mt-1 block w-full" wire:model.defer="title"  />
             <x-jet-input-error for="title" class="mt-2" />
         </div>
 
@@ -28,19 +28,19 @@
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="publishing_date" value="{{ __('Publishing Date (optional, ex: 01/20/2015 13:00)') }}" />
-            <x-jet-input id="publishing_date" type="text" class="mt-1 block w-full" wire:model.defer="publishing_date" autofocus />
+            <x-jet-input id="publishing_date" type="text" class="mt-1 block w-full" wire:model.defer="publishing_date"  />
             <x-jet-input-error for="publishing_date" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="description" value="{{ __('Description (optional)') }}" />
-            <x-textarea id="description" class="mt-1 block w-full" wire:model="description" autofocus />
+            <x-textarea id="description" class="mt-1 block w-full" wire:model="description"  />
             <x-jet-input-error for="description" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="link" value="{{ __('Episode Link (optional)') }}" />
-            <x-jet-input name="link" id="link" type="text" class="mt-1 block w-full" wire:model="link" autofocus />
+            <x-jet-input name="link" id="link" type="text" class="mt-1 block w-full" wire:model="link"  />
             <x-jet-input-error for="link" class="mt-2" />
         </div>
 
@@ -77,19 +77,19 @@
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="itunes_title" value="{{ __('iTunes Title (optional)') }}" />
-            <x-jet-input name="itunes_title" id="itunes_title" type="text" class="mt-1 block w-full" wire:model="itunes_title" autofocus />
+            <x-jet-input name="itunes_title" id="itunes_title" type="text" class="mt-1 block w-full" wire:model="itunes_title"  />
             <x-jet-input-error for="itunes_title" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="itunes_episode_number" value="{{ __('iTunes Episode Number (optional)') }}" />
-            <x-jet-input name="itunes_episode_number" id="itunes_episode_number" type="text" class="mt-1 block w-full" wire:model="itunes_episode_number" autofocus />
+            <x-jet-input name="itunes_episode_number" id="itunes_episode_number" type="text" class="mt-1 block w-full" wire:model="itunes_episode_number"  />
             <x-jet-input-error for="itunes_episode_number" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="itunes_season_number" value="{{ __('iTunes Season Number (optional)') }}" />
-            <x-jet-input name="itunes_season_number" id="itunes_season_number" type="text" class="mt-1 block w-full" wire:model="itunes_season_number" autofocus />
+            <x-jet-input name="itunes_season_number" id="itunes_season_number" type="text" class="mt-1 block w-full" wire:model="itunes_season_number"  />
             <x-jet-input-error for="itunes_season_number" class="mt-2" />
         </div>
 
@@ -124,31 +124,31 @@
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="spotify_order" value="{{ __('Spotify Order Number (optional)') }}" />
-            <x-jet-input name="spotify_order" id="spotify_order" type="text" class="mt-1 block w-full" wire:model="spotify_order" autofocus />
+            <x-jet-input name="spotify_order" id="spotify_order" type="text" class="mt-1 block w-full" wire:model="spotify_order"  />
             <x-jet-input-error for="spotify_order" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="spotify_start" value="{{ __('Spotify Viewable Start Time (optional, ex: 01/20/2015 13:00)') }}" />
-            <x-jet-input id="spotify_start" type="text" class="mt-1 block w-full" wire:model.defer="spotify_start" autofocus />
+            <x-jet-input id="spotify_start" type="text" class="mt-1 block w-full" wire:model.defer="spotify_start"  />
             <x-jet-input-error for="spotify_start" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="spotify_end" value="{{ __('Spotify Viewable End Time (optional, ex: 01/20/2015 13:00)') }}" />
-            <x-jet-input id="spotify_end" type="text" class="mt-1 block w-full" wire:model.defer="spotify_end" autofocus />
+            <x-jet-input id="spotify_end" type="text" class="mt-1 block w-full" wire:model.defer="spotify_end"  />
             <x-jet-input-error for="spotify_end" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="spotify_chapters" value="{{ __('Spotify Chapters (optional and in json form)') }} [{'start':'0', 'title':'Opening'}, ...]" />
-            <x-textarea name="spotify_chapters" id="spotify_chapters" class="mt-1 block w-full" wire:model="spotify_chapters" autofocus />
+            <x-textarea name="spotify_chapters" id="spotify_chapters" class="mt-1 block w-full" wire:model="spotify_chapters"  />
             <x-jet-input-error for="spotify_chapters" class="mt-2" />
         </div>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="spotify_keywords" value="{{ __('Spotify Keywords (optional, comma separated)') }}" />
-            <x-jet-input id="spotify_keywords" type="text" class="mt-1 block w-full" wire:model.defer="spotify_keywords" autofocus />
+            <x-jet-input id="spotify_keywords" type="text" class="mt-1 block w-full" wire:model.defer="spotify_keywords"  />
             <x-jet-input-error for="spotify_keywords" class="mt-2" />
         </div>
 

@@ -11,7 +11,7 @@
     <x-slot name="form">
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="new_feed" value="{{ __('New Feed URL (optional)') }}" />
-            <x-jet-input name="new_feed" id="new_feed" type="text" class="mt-1 block w-full" wire:model="new_feed" autofocus />
+            <x-jet-input name="new_feed" id="new_feed" type="text" class="mt-1 block w-full" wire:model="new_feed"  />
             <x-jet-input-error for="new_feed" class="mt-2" />
         </div>
     </x-slot>
