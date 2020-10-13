@@ -17,6 +17,17 @@
                         Back
                     </button>
                 </a>
+
+                <a class="hidden sm:block ml-3 shadow-sm rounded-md" href="{{ route('episode.edit', [$podcast->id, $episode->id]) }}">
+                    <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out">
+                        <!-- Heroicon name: plus-circle -->
+                        <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                        Edit
+                    </button>
+                </a>
+
             </div>
         </div>
     </x-slot>
@@ -27,10 +38,10 @@
             <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
                     <h3 class="text-lg leading-6 font-medium text-gray-900">
-                        Podcast Information
+                        Episode Information
                     </h3>
                     <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
-                        All provided details relating to the podcast itself.
+                        All provided details relating to the episode itself.
                     </p>
                 </div>
                 <div>
@@ -67,7 +78,7 @@
                                 Publishing Date
                             </dt>
                             <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                                @if(isset($episode->publishing_date) && $episode->publishing_date != null){{ $episode->publishing_date }}@else
+                                @if(isset($episode->publishing_date) && $episode->publishing_date != null){{ date("m/d/Y H:i", $episode->publishing_date) }}@else
                                 {{ 'No publishing date yet' }}@endif
                             </dd>
                         </div>
