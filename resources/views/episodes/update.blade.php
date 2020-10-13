@@ -26,6 +26,7 @@
             @livewire('update-episode-basic-form', ['podcast' => $podcast, 'episode' => $episode])
             @livewire('update-episode-itunes-form', ['podcast' => $podcast, 'episode' => $episode])
             @livewire('update-episode-spotify-form', ['podcast' => $podcast, 'episode' => $episode])
+            @livewire('block-episode-form', ['podcast' => $podcast, 'episode' => $episode])
         </div>
     </div>
 </x-app-layout>
