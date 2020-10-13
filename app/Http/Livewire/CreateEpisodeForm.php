@@ -34,8 +34,8 @@ class CreateEpisodeForm extends Component
         'spotify_countries' => 'nullable|exists:countries,id',
         'spotify_order' => 'nullable|numeric',
         // ensure that end is after start
-        'spotify_start' => 'nullable|date_format:m/d/y H:i',
-        'spotify_end' => 'nullable|date_format:m/d/y H:i',
+        'spotify_start' => 'nullable|date_format:m/d/Y H:i',
+        'spotify_end' => 'nullable|date_format:m/d/Y H:i',
         'spotify_chapters' => 'nullable|json',
         'spotify_keywords' => 'nullable|string'
     ];
@@ -66,7 +66,7 @@ class CreateEpisodeForm extends Component
                                     />'
                                 ];
         $item['guid'] = Str::uuid();
-        $item['publishing_date'] = $validated['publishing_date'];
+        $item['publishing_date'] = date("Y-m-d H:i:s", strtotime($validated['publishing_date']));
         $item['description'] = $validated['description'];
         $item['link'] = $validated['link'];
         if (isset($this->image) && $this->image != null)
@@ -89,8 +89,8 @@ class CreateEpisodeForm extends Component
         }
         $item['spotify_restriction'] = $validated['spotify_countries'];
         $item['order'] = $validated['spotify_order'];
-        $item['spotify_start'] = $validated['spotify_start'];
-        $item['spotify_end'] = $validated['spotify_end'];
+        $item['spotify_start'] = date("Y-m-d H:i:s", strtotime($validated['spotify_start']));
+        $item['spotify_end'] = date("Y-m-d H:i:s", strtotime($validated['spotify_end']));
         $item['spotify_chapters'] = $validated['spotify_chapters'];
         $item['spotify_keywords'] = explode(",", $validated['spotify_keywords']);
 
