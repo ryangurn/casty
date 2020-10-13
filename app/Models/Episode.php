@@ -52,6 +52,23 @@ class Episode extends Model
     ];
 
     /**
+     * @param $value
+     * @return string
+     */
+    public function getItunesEpisodeTypeAttribute($value)
+    {
+        switch ($value)
+        {
+            case 0:
+                return 'Full';
+            case 1:
+                return 'Trailer';
+            case 2:
+                return 'Bonus';
+        }
+    }
+
+    /**
      * @return HasOne
      */
     public function podcast()
