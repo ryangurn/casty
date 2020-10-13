@@ -50,11 +50,12 @@ class EpisodeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * @param Podcast $podcast
      * @param Episode $episode
-     * @return Response
+     * @return Application|Factory|View
      */
     public function edit(Podcast $podcast, Episode $episode)
     {
-        //
+        return view('episodes.update', compact('podcast', 'episode'));
     }
 }

@@ -34,6 +34,7 @@ Route::group(['middleware' => ['verified', 'auth:sanctum']], function (){
             Route::get('/', [EpisodeController::class, 'index'])->name('episode.index');
             Route::get('/create', [EpisodeController::class, 'create'])->name('episode.create');
             Route::get('/{episode}', [EpisodeController::class, 'show'])->name('episode.show');
+            Route::get('/edit/{episode}', [EpisodeController::class, 'edit'])->name('episode.edit');
         });
 
     });
