@@ -28,7 +28,8 @@ class UpdateEpisodeItunesForm extends Component
 
     public function mount($podcast, $episode)
     {
-        $this->publishing_date = date("m/d/Y H:i", $episode->publishing_date);
+        if(isset($episode->publishing_date) && $episode->publishing_date != null)
+            $this->publishing_date = date("m/d/Y H:i", $episode->publishing_date);
         $this->description = $episode->description;
         $this->link = $episode->link;
         $this->explicit = $episode->explicit;

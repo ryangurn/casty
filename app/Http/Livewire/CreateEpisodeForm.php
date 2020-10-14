@@ -66,7 +66,8 @@ class CreateEpisodeForm extends Component
                                     />'
                                 ];
         $item['guid'] = Str::uuid();
-        $item['publishing_date'] = date("Y-m-d H:i:s", strtotime($validated['publishing_date']));
+        if (isset($validated['publishing_date']) && $validated['publishing_date'] != null)
+            $item['publishing_date'] = date("Y-m-d H:i:s", strtotime($validated['publishing_date']));
         $item['description'] = $validated['description'];
         $item['link'] = $validated['link'];
         if (isset($this->image) && $this->image != null)
@@ -89,8 +90,10 @@ class CreateEpisodeForm extends Component
         }
         $item['spotify_restriction'] = $validated['spotify_countries'];
         $item['order'] = $validated['spotify_order'];
-        $item['spotify_start'] = date("Y-m-d H:i:s", strtotime($validated['spotify_start']));
-        $item['spotify_end'] = date("Y-m-d H:i:s", strtotime($validated['spotify_end']));
+        if (isset($validated['spotify_start']) && $validated['spotify_start'] != null)
+            $item['spotify_start'] = date("Y-m-d H:i:s", strtotime($validated['spotify_start']));
+        if (isset($validated['spotify_end']) && $validated['spotify_end'] != null)
+            $item['spotify_end'] = date("Y-m-d H:i:s", strtotime($validated['spotify_end']));
         $item['spotify_chapters'] = $validated['spotify_chapters'];
         $item['spotify_keywords'] = explode(",", $validated['spotify_keywords']);
 

@@ -24,8 +24,10 @@ class UpdateEpisodeSpotifyForm extends Component
     {
         $this->spotify_countries = $episode->spotify_restriction;
         $this->spotify_order = $episode->order;
-        $this->spotify_start = date("m/d/Y H:i", $episode->spotify_start);
-        $this->spotify_end = date("m/d/Y H:i", $episode->spotify_end);
+        if(isset($episode->spotify_start) && $episode->spotify_start != null)
+            $this->spotify_start = date("m/d/Y H:i", $episode->spotify_start);
+        if(isset($episode->spotify_end) && $episode->spotify_end != null)
+            $this->spotify_end = date("m/d/Y H:i", $episode->spotify_end);
         $this->spotify_chapters = $episode->spotify_chapters;
         $this->spotify_keywords = implode(", ", $episode->spotify_keywords);
     }
