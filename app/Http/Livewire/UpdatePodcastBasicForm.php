@@ -74,11 +74,16 @@ class UpdatePodcastBasicForm extends Component
     {
         $validated = $this->validate();
 
+
+
         $podcast = $this->podcast;
         $podcast->title = $validated['title'];
         $podcast->description = $validated['description'];
-        if ($validated['updated_image'])
-            $podcast->image = $validated['updated_image'];
+        if (isset($this->updated_image) && $this->updated_image != null) {
+            $photo = $this->updated_image->storeAs($this->podcast->id . '-media', time() . '-image.' . $this->updated_image->extension(), 'public');
+            $podcast->image = $photo;
+        }
+
         $podcast->language = $validated['language'];
         $podcast->explicit = $validated['explicit'];
         $podcast->categories = $validated['podcast_categories'];
