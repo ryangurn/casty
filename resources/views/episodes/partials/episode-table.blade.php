@@ -8,7 +8,6 @@
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Episode</th>
                         <th class="py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">iTunes</th>
                         <th class="py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Spotify</th>
-{{--                        <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Info</th>--}}
                         <th class="px-6 py-3 bg-gray-50"></th>
                     </tr>
                     </thead>
