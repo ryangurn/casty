@@ -73,9 +73,7 @@ class UpdatePodcastBasicForm extends Component
     public function updatePodcast()
     {
         $validated = $this->validate();
-
-
-
+        
         $podcast = $this->podcast;
         $podcast->title = $validated['title'];
         $podcast->description = $validated['description'];
