@@ -13,10 +13,11 @@ class CreatePodcastForm extends Component
 {
     use WithFileUploads;
 
-    public $title, $description, $image, $language, $explicit, $link, $itunes_title, $itunes_type, $copyright, $spotify_limit, $spotify_origin;
+    public $team_id, $title, $description, $image, $language, $explicit, $link, $itunes_title, $itunes_type, $copyright, $spotify_limit, $spotify_origin;
     public $author, $owner, $spotify_countries, $podcast_categories = [];
 
     protected $rules = [
+        'team_id' => 'required|exists:teams,id',
         'title' => 'required|min:3|max:255',
         'description' => 'required',
         'image' => 'required|image',
@@ -50,6 +51,7 @@ class CreatePodcastForm extends Component
         $p = $this->image->storeAs('podcast-art', time().'.'.$this->image->extension(), 'public');
 
         $podcast = [];
+        $podcast['team_id'] = $validated['team_id'];
         $podcast['title'] = $validated['title'];
         $podcast['description'] = $validated['description'];
         $podcast['image'] = $p;

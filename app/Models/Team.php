@@ -38,4 +38,9 @@ class Team extends JetstreamTeam
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
     ];
+
+    public function podcasts()
+    {
+        return $this->hasMany(Podcast::class, 'team_id', 'id');
+    }
 }

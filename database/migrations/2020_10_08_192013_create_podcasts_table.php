@@ -16,6 +16,7 @@ class CreatePodcastsTable extends Migration
         // following https://help.apple.com/itc/podcasts_connect/#/itcb54353390
         Schema::create('podcasts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('team_id')->constrained('teams');
             // required things
             $table->string('title');
             $table->string('description');

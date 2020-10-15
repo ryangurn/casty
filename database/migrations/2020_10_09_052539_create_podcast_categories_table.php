@@ -15,7 +15,7 @@ class CreatePodcastCategoriesTable extends Migration
     {
         Schema::create('podcast_categories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreignId('category_id')->nullable()->constrained('podcast_categories');
             $table->string('programming');
             $table->string('name');
             $table->timestamps();

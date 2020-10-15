@@ -16,6 +16,7 @@ class Podcast extends Model
      * @var string[]
      */
     protected $fillable = [
+        'team_id',
         'title',
         'description',
         'image',
@@ -71,6 +72,11 @@ class Podcast extends Model
             case 1:
                 return 'Serial';
         }
+    }
+
+    public function team()
+    {
+        return $this->hasOne(Team::class, 'id', 'team_id');
     }
 
     public function episodes()

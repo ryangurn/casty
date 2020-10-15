@@ -21,7 +21,17 @@ class PodcastController extends Controller
      */
     public function index()
     {
-        $podcasts = Podcast::all();
+        $user = auth()->user();
+        $podcasts = [];
+        foreach($user->allTeams() as $team)
+        {
+            foreach($team->podcasts as $p)
+            {
+                $podcasts[] = $p;
+            }
+        }
+        $podcasts = collect($podcasts);
+
         return view('podcasts.index', compact('podcasts'));
     }
 
@@ -51,7 +61,7 @@ class PodcastController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Podcast $podcast
-     * @return Response
+     * @return Application|Factory|View|Response
      */
     public function edit(Podcast $podcast)
     {

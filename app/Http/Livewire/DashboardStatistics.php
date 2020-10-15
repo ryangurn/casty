@@ -10,8 +10,18 @@ class DashboardStatistics extends Component
 {
     public function render()
     {
-        $podcastCount = Podcast::all()->count();
-        $episodeCount = Episode::all()->count();
+        $user = auth()->user();
+        $podcastCount = 0;
+        $episodeCount = 0;
+        foreach($user->allTeams() as $team)
+        {
+            $podcastCount += $team->podcasts->count();
+            foreach($team->podcasts as $podcast)
+            {
+                $episodeCount += $podcast->episodes->count();
+            }
+        }
+
         return view('dashboard.partials.dashboard-statistics', compact('podcastCount', 'episodeCount'));
     }
 }
