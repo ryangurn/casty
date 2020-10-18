@@ -45,12 +45,13 @@ class UpdateEpisodeItunesForm extends Component
         return $this->validateOnly($parameter);
     }
 
-    public function updateItunes()
+    public function updateiTunes()
     {
         $validated = $this->validate();
         $episode = $this->episode;
 
-        $episode->publishing_date = date("Y-m-d H:i:s", strtotime($validated['publishing_date']));
+        if (isset($validated['publishing_date']) && $validated['publishing_date'] != null)
+            $episode->publishing_date = date("Y-m-d H:i:s", strtotime($validated['publishing_date']));
         $episode->description = $validated['description'];
         $episode->link = $validated['link'];
         if (isset($this->updated_image) && $this->updated_image != null) {

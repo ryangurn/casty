@@ -34,7 +34,7 @@ class UpdateEpisodeSpotifyForm extends Component
 
     public function updated($parameter)
     {
-        return $this->updated($parameter);
+        return $this->validateOnly($parameter);
     }
 
     public function updateSpotify()
