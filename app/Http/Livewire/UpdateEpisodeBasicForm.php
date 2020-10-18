@@ -4,6 +4,9 @@ namespace App\Http\Livewire;
 
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use wapmorgan\MediaFile\Exceptions\FileAccessException;
+use wapmorgan\MediaFile\Exceptions\ParsingException;
+use wapmorgan\MediaFile\MediaFile;
 
 class UpdateEpisodeBasicForm extends Component
 {
@@ -35,12 +38,28 @@ class UpdateEpisodeBasicForm extends Component
         {
             $media = $this->enclosure->storeAs($this->podcast->id . '-media', time() . '.'. $this->enclosure->extension(), 'public');
 
-            $episode->enclosure = ['file' => $media, 'tag' =>
-                '<enclosure
-                                     url="'.Storage::url($media).'" 
-                                     length="'.$this->enclosure->getSize().'"
-                                     type="audio/mpeg
-                                    />'
+            $duration = null;
+            $bitrate = null;
+            $samplerate = null;
+            $lossless = null;
+            $vbr = null;
+            try {
+                $file = MediaFile::open($this->enclosure->getRealPath());
+                if ($file->isAudio())
+                {
+                    $audio = $file->getAudio();
+                    $duration = $audio->getLength();
+                    $bitrate = $audio->getBitRate();
+                    $samplerate = $audio->getSampleRate();
+                    $lossless = $audio->isLossless();
+                    $vbr = $audio->isVariableBitRate();
+                }
+            } catch (FileAccessException | ParsingException $e) {
+                return redirect()->back()->withErrors(['Unable to verify the audio file']);
+            }
+
+            $item['enclosure'] = ['file' => $media, 'length' => $this->enclosure->getSize(),
+                'duration' => $duration, 'bitrate' => $bitrate, 'samplerate' => $samplerate, 'lossless' => $lossless, 'vbr' => $vbr
             ];
         }
         $episode->save();

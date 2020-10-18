@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use wapmorgan\MediaFile\Exceptions\FileAccessException;
+use wapmorgan\MediaFile\Exceptions\ParsingException;
+use wapmorgan\MediaFile\MediaFile;
 
 class CreateEpisodeForm extends Component
 {
@@ -58,14 +61,31 @@ class CreateEpisodeForm extends Component
         $item = [];
         $item['podcast_id'] = $this->podcast->id;
         $item['title'] = $validated['title'];
+
+        $duration = null;
+        $bitrate = null;
+        $samplerate = null;
+        $lossless = null;
+        $vbr = null;
+        try {
+            $file = MediaFile::open($this->enclosure->getRealPath());
+            if ($file->isAudio())
+            {
+                $audio = $file->getAudio();
+                $duration = $audio->getLength();
+                $bitrate = $audio->getBitRate();
+                $samplerate = $audio->getSampleRate();
+                $lossless = $audio->isLossless();
+                $vbr = $audio->isVariableBitRate();
+            }
+        } catch (FileAccessException | ParsingException $e) {
+            return redirect()->back()->withErrors(['Unable to verify the audio file']);
+        }
+
         $item['enclosure'] = ['file' => $media, 'length' => $this->enclosure->getSize(),
-            'tag' =>
-                '<enclosure
-                 url="'.Storage::url($media).'" 
-                 length="'.$this->enclosure->getSize().'"
-                 type="audio/mpeg
-                />'
-            ];
+            'duration' => $duration, 'bitrate' => $bitrate, 'samplerate' => $samplerate, 'lossless' => $lossless, 'vbr' => $vbr
+        ];
+
         $item['guid'] = Str::uuid();
         if (isset($validated['publishing_date']) && $validated['publishing_date'] != null)
             $item['publishing_date'] = date("Y-m-d H:i:s", strtotime($validated['publishing_date']));
