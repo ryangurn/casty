@@ -129,15 +129,10 @@
                                     <img class="h-10 w-10 rounded-md" src="{{ Gravatar::get($podcast->author['email']) }}">
                                 </div>
                                 @endif
-                                <div class="ml-4">
-                                    @if($podcast->author['name'])
-                                    <div class="text-sm leading-5 font-medium text-gray-900">
-                                        {{ $podcast->author['name'] }}
-                                    </div>
-                                    @endif
-                                    @if(isset($podcast->author['email']))
-                                    <div class="text-sm leading-5 text-gray-500">
-                                        {{ $podcast->author['email'] }}
+                                <div>
+                                    @if(isset($podcast->author) && $podcast->author != null)
+                                    <div class="text-sm font-medium text-gray-900">
+                                        {{ $podcast->author }}
                                     </div>
                                     @endif
                                 </div>

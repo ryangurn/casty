@@ -17,8 +17,7 @@ class UpdatePodcastItunesForm extends Component
 
     protected $rules = [
         'link' => 'nullable|url',
-        'author.name' => 'nullable|min:1|max:50',
-        'author.email' => 'nullable|email',
+        'author' => 'nullable|min:1|max:50',
         'owner.name' => 'nullable|min:1|max:50',
         'owner.email' => 'nullable|email',
         'itunes_title' => 'nullable|min:3|max:255',
@@ -58,14 +57,11 @@ class UpdatePodcastItunesForm extends Component
         $podcast = $this->podcast;
         $podcast->link = $validated['link'];
 
-        $author = $podcast->author;
-        $author['name'] = $validated['author']['name'];
-        $author['email'] = $validated['author']['email'];
         $owner = $podcast->owner;
         $owner['name'] = $validated['owner']['name'];
         $owner['email'] = $validated['owner']['email'];
 
-        $podcast->author = $author;
+        $podcast->author = $validated['author'];
         $podcast->owner = $owner;
         $podcast->itunes_title = $validated['itunes_title'];
         $podcast->itunes_type = ($validated['itunes_type'] == null) ? 0 : (($validated['itunes_type'] == "serial") ? 1 : 0);

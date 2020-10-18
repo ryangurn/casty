@@ -104,16 +104,10 @@
         </div>
 
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="author.name" value="{{ __('Author Name (optional)') }}" />
-            <x-jet-input name="author.name" id="author.name" type="text" class="mt-1 block w-full" wire:model="author.name"  />
-            <x-jet-input-error for="author.name" class="mt-2" />
-        </div>
-
-        <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="author.email" value="{{ __('Author Email (optional)') }}" />
-            <x-jet-input name="author.email" id="author.email" type="text" class="mt-1 block w-full" wire:model="author.email"  />
-            <x-jet-input-error for="author.email" class="mt-2" />
-        </div>
+            <x-jet-label for="author" value="{{ __('Podcast Author (optional)') }}" />
+            <x-jet-input name="author" id="author" type="text" class="mt-1 block w-full" wire:model="author"  />
+            <x-jet-input-error for="author" class="mt-2" />
+        </div>>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="owner.name" value="{{ __('Owner Name (optional)') }}" />
