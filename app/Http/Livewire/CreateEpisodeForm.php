@@ -58,13 +58,14 @@ class CreateEpisodeForm extends Component
         $item = [];
         $item['podcast_id'] = $this->podcast->id;
         $item['title'] = $validated['title'];
-        $item['enclosure'] = ['file' => $media, 'tag' =>
-                                    '<enclosure
-                                     url="'.Storage::url($media).'" 
-                                     length="'.$this->enclosure->getSize().'"
-                                     type="audio/mpeg
-                                    />'
-                                ];
+        $item['enclosure'] = ['file' => $media, 'length' => $this->enclosure->getSize(),
+            'tag' =>
+                '<enclosure
+                 url="'.Storage::url($media).'" 
+                 length="'.$this->enclosure->getSize().'"
+                 type="audio/mpeg
+                />'
+            ];
         $item['guid'] = Str::uuid();
         if (isset($validated['publishing_date']) && $validated['publishing_date'] != null)
             $item['publishing_date'] = date("Y-m-d H:i:s", strtotime($validated['publishing_date']));
