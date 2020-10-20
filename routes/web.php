@@ -21,6 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/itunes/{podcast}', [AssetController::class, 'iTunes'])->name('asset.itunes');
+Route::get('/spotify/{podcast}', [AssetController::class, 'Spotify'])->name('asset.spotify');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard.index');

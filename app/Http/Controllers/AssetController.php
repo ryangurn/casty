@@ -30,8 +30,25 @@ class AssetController extends Controller
             ->header('Content-Type', 'text/xml');
     }
 
-    public function Spotify()
+    public function Spotify(Podcast $podcast)
     {
+        $pcs = $podcast->categories;
+        $categories = [];
+        foreach($pcs as $pc)
+        {
+            $c = PodcastCategory::where('id', '=', $pc)->first();
+            if ($c->category != null)
+            {
+                $categories[$c->category->name][] = $c->name;
+            }
+            else
+            {
+                $categories[] = $c->name;
+            }
+        }
 
+        return response()
+            ->view('assets.spotify', compact('podcast', 'categories'))
+            ->header('Content-Type', 'text/xml');
     }
 }
