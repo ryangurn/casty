@@ -50,6 +50,9 @@
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-black mb-4">
+                                {{ $podcast->episodes->count() }} {{ Str::plural("Episode", $podcast->episodes->count()) }}
+                            </span><br />
                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full @if ($podcast->itunes_type == "Episodic"){{ 'bg-blue-100' }}@elseif($podcast->itunes_type == "Serial"){{ 'bg-yellow-100' }}@endif text-black-800">
                               {{ $podcast->itunes_type }}
                             </span>

@@ -61,7 +61,7 @@
                                         <div class="flex flex-wrap">
                                         @if(!empty($podcast->spotify_restriction))
                                             @foreach($podcast->spotify_restriction as $sr)
-                                                <span class="px-2 mt-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-500 text-black-800">
+                                                <span class="rounded-full px-4 mr-2 mt-2 bg-blue-500 text-white p-2 rounded  leading-none flex items-center">
                                                   {{ \App\Models\Country::where('id', '=', $sr)->first()->name }}
                                                 </span>
                                             @endforeach
