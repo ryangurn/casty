@@ -69,7 +69,7 @@
                 <item>
                     <title>{{ $item->title }}</title>
                     <enclosure
-                            url="{{ request()->root() . '/' . $item->enclosure['file'] }}"
+                            url="{{ route('asset.audio', $item->guid) }}"
                             length="{{ $item->enclosure['length'] }}"
                             type="audio/mpeg"
                     />

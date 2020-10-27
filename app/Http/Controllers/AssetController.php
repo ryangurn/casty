@@ -71,7 +71,7 @@ class AssetController extends Controller
     }
 
     /**
-     * @param $guid
+     * @param Episode $episode
      * @return Application|ResponseFactory|Response
      */
     public function audio(Episode $episode)
