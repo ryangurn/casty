@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Str;
 
 /**
  * Class Podcast
@@ -12,6 +13,15 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Podcast extends Model
 {
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::saving(function ($model) {
+            $model->guid = Str::uuid();
+        });
+    }
+
     /**
      * @var string[]
      */
