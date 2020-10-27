@@ -5,10 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Episode;
 use App\Models\Podcast;
 use App\Models\PodcastCategory;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * Class AssetController
+ * @package App\Http\Controllers
+ */
 class AssetController extends Controller
 {
     /**
@@ -64,20 +71,20 @@ class AssetController extends Controller
     }
 
     /**
-     *
+     * @param $guid
+     * @return Application|ResponseFactory|Response
      */
-    public function audio($guid)
+    public function audio(Episode $episode)
     {
-        $episode = Episode::where('guid', '=', $guid)->first();
-
         $file = $episode->enclosure['file'];
-        $f = Storage::disk('public')->get($file);
+        try {
+            $f = Storage::disk('public')->get($file);
+        } catch (FileNotFoundException $e) {
+            return response(null, 404);
+        }
 
         return response($f)
             ->header('Content-Length', $episode->enclosure['length'])
             ->header('Content-Type', 'audio/mpeg');
-//        return (new Response($file, 200))
-//            ->header('Content-Type', 'audio/mpeg');
-
     }
 }

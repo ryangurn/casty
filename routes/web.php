@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::get('/itunes/{podcast}', [AssetController::class, 'iTunes'])->name('asset.itunes');
 Route::get('/spotify/{podcast}', [AssetController::class, 'Spotify'])->name('asset.spotify');
-Route::get('/audio/{guid}', [AssetController::class, 'audio'])->name('asset.audio');
+Route::get('/audio/{episode:guid}', [AssetController::class, 'audio'])->name('asset.audio');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard.index');
