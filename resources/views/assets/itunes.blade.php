@@ -86,7 +86,7 @@
                     @endif
                     <itunes:duration>{{ $item->enclosure['duration'] }}</itunes:duration>
                 @if (isset($item->link) && $item->link != null)
-                        <link>{{ $item->link }}</item>
+                        <link>{{ $item->link }}</link>
                 @endif
                 @if (isset($item->image) && $item->image != null)
                     <itunes:image href="{{ route('asset.episode.image', $item->guid) }}" />
