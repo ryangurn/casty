@@ -80,7 +80,7 @@
                                         @endif
                                         @if(isset($episode->spotify_chapters) && $episode->spotify_chapters != null)
                                             <span class="rounded-full px-4 mr-2 mt-2 bg-green-600 text-white p-2 rounded  leading-none flex items-center">
-                                                Chapters: {{ count(json_decode($episode->spotify_chapters)) }}
+                                                Chapters: {{ count($episode->spotify_chapters) }}
                                             </span>
                                         @endif
                                         @if(isset($episode->spotify_keywords) && $episode->spotify_keywords != null && $episode->spotify_keywords[0] != "")
