@@ -8,7 +8,7 @@
             </description>
         @endif
         <itunes:image
-                href="{{ request()->root() . Storage::url($podcast->image) }}"
+                href="{{ route('asset.podcast.image', $podcast->guid) }}"
         />
         <language>{{ \App\Models\Language::where('id', '=', $podcast->language)->first()->iso_639_1 }}</language>
 
@@ -89,7 +89,7 @@
                         <link>{{ $item->link }}</item>
                 @endif
                 @if (isset($item->image) && $item->image != null)
-                    <itunes:image href="{{ request()->root() . '/'. $item->image }}" />
+                    <itunes:image href="{{ route('asset.episode.image', $item->guid) }}" />
                 @endif
                 <itunes:explicit>{{ ($item->explicit == 0) ? "false" : "true"  }}</itunes:explicit>
                 @if (isset($item->itunes_title) & $item->itunes_title != null)
