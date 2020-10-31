@@ -87,4 +87,34 @@ class AssetController extends Controller
             ->header('Content-Length', $episode->enclosure['length'])
             ->header('Content-Type', 'audio/mpeg');
     }
+
+    /**
+     * @param Podcast $podcast
+     * @return Application|ResponseFactory|Response
+     * @throws FileNotFoundException
+     */
+    public function podcast_image(Podcast $podcast)
+    {
+        $file = $podcast->image;
+        $content = Storage::disk('public')->get($file);
+
+        return response($content)
+            ->header('Content-Type', 'image/jpeg');
+    }
+
+    /**
+     * @param Episode $episode
+     * @return Application|ResponseFactory|Response
+     * @throws FileNotFoundException
+     */
+    public function episode_image(Episode $episode)
+    {
+        if ($episode->image == null)
+            return response(NULL, 404);
+        $file = $episode->image;
+        $content = Storage::disk('public')->get($file);
+
+        return response($content)
+            ->header('Content-Type', 'image/jpeg');
+    }
 }
