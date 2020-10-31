@@ -17,6 +17,8 @@ class UpdateEpisodeSpotifyForm extends Component
         'spotify_start' => 'nullable|date_format:m/d/Y H:i',
         'spotify_end' => 'nullable|date_format:m/d/Y H:i',
         'spotify_chapters' => 'nullable|json',
+        'spotify_chapters.*.title' => 'required',
+        'spotify_chapters.*.start' => 'required',
         'spotify_keywords' => 'nullable|string'
     ];
 
@@ -46,7 +48,7 @@ class UpdateEpisodeSpotifyForm extends Component
         $episode->order = $validated['spotify_order'];
         $episode->spotify_start = date("Y-m-d H:i:s", strtotime($validated['spotify_start']));
         $episode->spotify_end = date("Y-m-d H:i:s", strtotime($validated['spotify_end']));
-        $episode->spotify_chapters = $validated['spotify_chapters'];
+        $episode->spotify_chapters = json_decode($validated['spotify_chapters'], true);
         $episode->spotify_keywords = explode(",", $validated['spotify_keywords']);
         $episode->save();
 

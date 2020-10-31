@@ -231,7 +231,7 @@
                                 @if(isset($episode->spotify_chapters) && $episode->spotify_chapters != null)
                                     <ul>
                                     @foreach(json_decode($episode->spotify_chapters, true) as $sc)
-                                        <li>{{ $sc['start'] }} seconds - "{{ $sc['title'] }}" Link:({{ $sc['href'] }}) Image:[{{ $sc['image'] }}]</li>
+                                        <li>{{ $sc['start'] }} seconds - "{{ $sc['title'] }}" @if(isset($sc['href']))Link:({{ $sc['href'] }})@endif @if(isset($sc['image']))Image:[{{ $sc['image'] }}]@endif</li>
                                     @endforeach
                                     </ul>
                                 @else

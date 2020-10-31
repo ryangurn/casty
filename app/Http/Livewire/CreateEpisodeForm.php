@@ -40,6 +40,8 @@ class CreateEpisodeForm extends Component
         'spotify_start' => 'nullable|date_format:m/d/Y H:i',
         'spotify_end' => 'nullable|date_format:m/d/Y H:i',
         'spotify_chapters' => 'nullable|json',
+        'spotify_chapters.*.title' => 'required',
+        'spotify_chapters.*.start' => 'required',
         'spotify_keywords' => 'nullable|string'
     ];
 
@@ -115,7 +117,7 @@ class CreateEpisodeForm extends Component
             $item['spotify_start'] = date("Y-m-d H:i:s", strtotime($validated['spotify_start']));
         if (isset($validated['spotify_end']) && $validated['spotify_end'] != null)
             $item['spotify_end'] = date("Y-m-d H:i:s", strtotime($validated['spotify_end']));
-        $item['spotify_chapters'] = $validated['spotify_chapters'];
+        $item['spotify_chapters'] = json_decode($validated['spotify_chapters'], true);
         $item['spotify_keywords'] = explode(",", $validated['spotify_keywords']);
 
         Episode::create($item);
