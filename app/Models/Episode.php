@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * Class Episode
  * @package App\Models
+ * @method static where(string $string, string $string1, $guid)
  */
 class Episode extends Model
 {
@@ -74,5 +76,13 @@ class Episode extends Model
     public function podcast()
     {
         return $this->hasOne(Podcast::class, 'id', 'podcast_id');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function page()
+    {
+        return $this->hasOne(Page::class, 'episode_id', 'id');
     }
 }
