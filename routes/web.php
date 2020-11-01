@@ -21,6 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/itunes/{podcast}', [AssetController::class, 'iTunes'])->name('asset.itunes');
 Route::get('/spotify/{podcast}', [AssetController::class, 'Spotify'])->name('asset.spotify');
 Route::get('/audio/{episode:guid}', [AssetController::class, 'audio'])->name('asset.audio');
@@ -49,5 +50,9 @@ Route::group(['middleware' => ['verified', 'auth:sanctum']], function (){
 
     Route::group(['prefix' => 'page'], function() {
         Route::get('/', [PageController::class, 'index'])->name('pages.index');
+        Route::get('/create/{guid}', [PageController::class, 'create'])->name('pages.create');
+        Route::get('/{page}', [PageController::class, 'show'])->name('pages.show');
     });
 });
+
+Route::get('/{page:slug}', [PageController::class, 'pub'])->name('public.page');

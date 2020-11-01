@@ -34,9 +34,31 @@
                                     </div>
                                 </a>
                             </td>
-                            <td></td>
-                            <td>Create button</td>
-                            <td></td>
+                            <td class="px-6 py-4 whitespace-no-wrap"></td>
+                            <td>
+                                @if ($podcast->page == null)
+                                <a class="m-3" href="{{ route('pages.create', $podcast->guid) }}">
+                                    <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out">
+                                        <!-- Heroicon name: plus-circle -->
+                                        <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        Create Podcast Page
+                                    </button>
+                                </a>
+                                @else
+                                    <a class="m-3" href="{{ route('pages.show', $podcast->page->id) }}">
+                                        <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out">
+                                            <!-- Heroicon name: plus-circle -->
+                                            <svg  class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                                            </svg>
+                                            View
+                                        </button>
+                                    </a>
+                                @endif
+                            </td>
+                            <td>@if ($podcast->page != null)<a href="{{ route('public.page', $podcast->page->slug) }}">Public Page</a>@endif</td>
                         </tr>
                         {{-- row for each episode --}}
                             @foreach($podcast->episodes as $episode)
@@ -64,7 +86,29 @@
                                    </div>
                                </a>
                            </td>
-                           <td>Create button</td>
+                           <td>
+                               @if ($episode->page == null)
+                               <a class="m-3" href="{{ route('pages.create', $episode->guid) }}">
+                                   <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out">
+                                       <!-- Heroicon name: plus-circle -->
+                                       <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                       </svg>
+                                       Create Episode Page
+                                   </button>
+                               </a>
+                               @else
+                                   <a class="m-3" href="{{ route('pages.show', $episode->page->id) }}">
+                                       <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out">
+                                           <!-- Heroicon name: plus-circle -->
+                                           <svg  class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                                           </svg>
+                                           View
+                                       </button>
+                                   </a>
+                               @endif
+                           </td>
                            <td></td>
                        </tr>
                             @endforeach
