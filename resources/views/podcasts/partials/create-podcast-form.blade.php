@@ -107,7 +107,7 @@
             <x-jet-label for="author" value="{{ __('Podcast Author (optional)') }}" />
             <x-jet-input name="author" id="author" type="text" class="mt-1 block w-full" wire:model="author"  />
             <x-jet-input-error for="author" class="mt-2" />
-        </div>>
+        </div>
 
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="owner.name" value="{{ __('Owner Name (optional)') }}" />
