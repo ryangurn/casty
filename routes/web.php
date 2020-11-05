@@ -56,3 +56,4 @@ Route::group(['middleware' => ['verified', 'auth:sanctum']], function (){
 });
 
 Route::get('/{page:slug}', [PageController::class, 'pub'])->name('public.page');
+Route::post('/{page:slug}', [PageController::class, 'save'])->name('public.save');

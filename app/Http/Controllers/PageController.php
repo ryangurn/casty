@@ -37,4 +37,20 @@ class PageController extends Controller
     {
         return view('pages.public', compact('page'));
     }
+
+    public function save(Request $request, Page $page)
+    {
+        $validator = validator($request->all(), [
+            'page_title' => 'nullable|min:3|max:255',
+            'content' => 'nullable',
+        ]);
+
+        if ($request->has('page_title'))
+            $page->title = trim(strip_tags($request->get('page_title')));
+        if ($request->has('content'))
+            $page->content = $request->get('content');
+        $page->save();
+
+        return response()->json('ok', 200);
+    }
 }
